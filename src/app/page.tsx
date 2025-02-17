@@ -3,6 +3,7 @@ import About from "@/components/About";
 import Booking from "@/components/Booking";
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
+import LogoCarousel from "@/components/LogoCarousel";
 import Newsletter from "@/components/Newsletter";
 import PodcastFeature from "@/components/PodcastFeature"
 import Services from "@/components/Services";
@@ -15,6 +16,7 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full">
         <Hero />
         <Services />
+        <LogoCarousel speed={40} />
         <About />
         <PodcastFeature />
         <Booking />
