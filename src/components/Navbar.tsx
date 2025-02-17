@@ -8,20 +8,19 @@ const Navbar = () => {
 
   const menuItems = [
     { label: 'Home', href: '#' },
-    { label: 'What I Offer', href: '#services' },
-    { label: 'About Me', href: '#about' },
-    { label: 'My Story', href: '#podcast' },
+    { label: 'Services', href: '#services' },
+    { label: 'My Story', href: '#about' },
     { label: 'Testimonials', href: '#testimonials' },
     { label: 'Contact', href: '#contact' }
   ];
 
   return (
-    <nav className="w-full bg-white backdrop-blur-md shadow-sm z-50">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="flex flex-col justify-between items-center h-8 p-4 space-y-4">
+    <nav className="w-full bg-red-200 z-56 absolute top-0 left-0 right-0">
+      <div className="mx-auto p-4">
+        <div className="flex md:flex-col justify-between items-center">
           {/* Logo */}
-          <div className="flex justify-center text-center font-bold text-3xl w-full">
-            <a href="#" className="text-gray-900 hover:text-gray-600">
+          <div className="font-bold text-3xl">
+            <a href="#" className="text-gray-900 font-light">
               Nahom Abegaze
             </a>
           </div>
@@ -61,7 +60,7 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-28 inset-x-0 bg-white shadow-md">
+          <div className="md:hidden absolute top-18 inset-x-0 bg-white shadow-md">
             <div className="px-2 pt-2 pb-3 space-y-1">
               {menuItems.map((item) => (
                 <a

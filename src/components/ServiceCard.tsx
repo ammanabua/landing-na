@@ -16,14 +16,14 @@ const ServiceCard = ({
   description,
 }: ServiceCardProps) => {
   return (
-    <Card className="">
+    <Card className="w-full">
       {/* Image Section */}
       <div className="h-48 overflow-hidden">
         <Image
           src={image}
           alt={title}
-          width={200}
-          height={100}
+          width={80}
+          height={80}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
       </div>
