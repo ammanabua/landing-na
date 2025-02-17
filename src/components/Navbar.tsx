@@ -15,12 +15,12 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full bg-red-200 z-56 absolute top-0 left-0 right-0">
+    <nav className="w-full bg-[#353463] z-56 absolute top-0 left-0 right-0">
       <div className="mx-auto p-4">
-        <div className="flex md:flex-col justify-between items-center">
+        <div className="flex md:flex-col justify-between items-center space-y-4">
           {/* Logo */}
           <div className="font-bold text-3xl">
-            <a href="#" className="text-gray-900 font-light">
+            <a href="#" className="text-[#f9c771] font-light">
               Nahom Abegaze
             </a>
           </div>
@@ -31,14 +31,11 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
+                className="text-gray-400 hover:text-gray-900 transition-colors duration-200 cursor-pointer"
               >
                 {item.label}
               </a>
             ))}
-            <Button variant="default" size="sm">
-              Book a Session
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -73,7 +70,7 @@ const Navbar = () => {
               ))}
               <div className="px-3 py-2">
                 <Button variant="default" size="sm" className="w-full">
-                  Book a Session
+                  Book a Consultation
                 </Button>
               </div>
             </div>

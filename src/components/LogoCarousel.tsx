@@ -10,7 +10,7 @@ interface Logo {
 }
 
 interface LogoCarouselProps {
-  speed?: number; // Animation duration in seconds
+  speed?: number;
   className?: string;
 }
 
@@ -21,7 +21,6 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   const [animationDuration, setAnimationDuration] = useState<number>(speed);
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
-  // Example company logos - replace with actual logos
   const logos: Logo[] = [
     { name: 'Google', src: '/api/placeholder/160/80', width: 160, height: 80 },
     { name: 'Microsoft', src: '/api/placeholder/160/80', width: 160, height: 80 },
@@ -33,22 +32,17 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
     { name: 'IBM', src: '/api/placeholder/160/80', width: 160, height: 80 }
   ];
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
 
-    // Set initial width
     handleResize();
-
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Adjust animation speed based on screen size
   useEffect(() => {
-    // Slower on mobile for better readability
     if (windowWidth < 768) {
       setAnimationDuration(speed * 1.5);
     } else {
@@ -56,24 +50,11 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
     }
   }, [windowWidth, speed]);
 
-  // Double the logos array to create seamless loop
   const duplicatedLogos = [...logos, ...logos];
 
-  const getLogoSize = (): { height: string; maxWidth: string } => {
-    if (windowWidth < 640) { // sm
-      return { height: 'h-8', maxWidth: 'max-w-[100px]' };
-    } else if (windowWidth < 1024) { // md
-      return { height: 'h-10', maxWidth: 'max-w-[120px]' };
-    } else { // lg and above
-      return { height: 'h-12', maxWidth: 'max-w-[160px]' };
-    }
-  };
-
-  const { height, maxWidth } = getLogoSize();
-
   return (
-    <section className={`py-8 sm:py-12 lg:py-16 bg-gray-50 overflow-hidden flex w-full justify-center items-center ${className}`}>
-      <div className="max-w-6xl mx-auto px-4">
+    <section className={`py-8 sm:py-12 lg:py-16 bg-gray-50 flex w-full justify-center items-center ${className}`}>
+      <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
@@ -86,16 +67,15 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
+        <div className="relative overflow-hidden w-full">
           {/* Gradient Overlays */}
           <div className="absolute left-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
           <div className="absolute right-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
 
           {/* Logo Track */}
-          <div className="relative flex overflow-x-hidden">
-            {/* First set of logos */}
+          <div className="relative flex w-full overflow-hidden">
             <div 
-              className="flex animate-marquee whitespace-nowrap"
+              className="flex whitespace-nowrap animate-marquee"
               style={{
                 animation: `marquee ${animationDuration}s linear infinite`
               }}
@@ -103,12 +83,13 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
               {duplicatedLogos.map((logo, index) => (
                 <div
                   key={`${logo.name}-${index}`}
-                  className={`mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center ${maxWidth}`}
+                  className="mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center"
+                  style={{ maxWidth: '140px' }}
                 >
                   <Image
                     src={logo.src}
                     alt={`${logo.name} logo`}
-                    className={`${height} w-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105`}
+                    className="h-8 sm:h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105"
                     loading="lazy"
                     width={logo.width}
                     height={logo.height}
@@ -132,6 +113,8 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
         
         .animate-marquee {
           will-change: transform;
+          display: flex;
+          min-width: 200%;
         }
 
         @media (prefers-reduced-motion: reduce) {

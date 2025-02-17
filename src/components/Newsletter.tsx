@@ -11,40 +11,21 @@ const Newsletter = () => {
   const [error, setError] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  };
+  const validateEmail = (email: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newEmail = e.target.value;
-    setEmail(newEmail);
+    setEmail(e.target.value);
     setIsTyping(true);
-    
-    if (newEmail === '') {
-      setError('');
-    } else if (!validateEmail(newEmail)) {
-      setError('Please enter a valid email address');
-    } else {
-      setError('');
-    }
+    setError(e.target.value === '' ? '' : validateEmail(e.target.value) ? '' : 'Please enter a valid email address');
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsTyping(false);
 
-    if (!email) {
-      setError('Email is required');
-      return;
-    }
+    if (!email) return setError('Email is required');
+    if (!validateEmail(email)) return setError('Please enter a valid email address');
 
-    if (!validateEmail(email)) {
-      setError('Please enter a valid email address');
-      return;
-    }
-
-    // If validation passes, submit the form
     setError('');
     setIsSubmitted(true);
     setEmail('');
@@ -52,81 +33,69 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="py-16 bg-gradient-to-br from-blue-50 to-gray-50 w-full flex justify-center items-center">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="relative">
-          {/* Background Decorative Elements */}
-          <div className="absolute -top-8 -left-8 w-16 h-16 bg-blue-100 rounded-full opacity-50" />
-          <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-blue-100 rounded-full opacity-50" />
+    <section className="w-full flex justify-center items-center py-12 px-4 bg-gradient-to-br from-blue-50 to-gray-50">
+      <div className="max-w-6xl mx-auto w-full">
+        {/* Main Content */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Side - Content */}
+            <div className="space-y-6 text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl font-bold">Level Up Your Life & Career</h2>
+              <p className="text-gray-600 text-base sm:text-lg">
+                Join our community of ambitious professionals. Get weekly insights on:
+              </p>
+              <ul className="space-y-3 text-sm sm:text-base">
+                {[
+                  'Leadership strategies & career growth tips',
+                  'Productivity hacks & work-life balance',
+                  'Exclusive coaching resources & exercises',
+                  'Early access to workshops & events'
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-2 justify-center lg:justify-start">
+                    <Check className="w-5 h-5 text-green-500" />
+                    <span className="text-gray-600">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Main Content */}
-          <div className="relative bg-white rounded-2xl shadow-lg p-8 md:p-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left side - Copy */}
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold">
-                  Level Up Your Life & Career
-                </h2>
-                <p className="text-gray-600 text-lg">
-                  Join our community of ambitious professionals. Get weekly insights on:
-                </p>
-                <ul className="space-y-3">
-                  {[
-                    'Leadership strategies & career growth tips',
-                    'Productivity hacks & work-life balance',
-                    'Exclusive coaching resources & exercises',
-                    'Early access to workshops & events'
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <Check className="w-5 h-5 text-green-500" />
-                      <span className="text-gray-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            {/* Right Side - Form */}
+            <div className="space-y-6 w-full">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Input
+                    type="email"
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={handleEmailChange}
+                    className={`w-full p-4 sm:p-5 text-base sm:text-lg border ${error && !isTyping ? 'border-red-500 focus:ring-red-500' : ''}`}
+                    aria-invalid={error ? "true" : "false"}
+                  />
+                  {error && !isTyping && (
+                    <div className="flex items-center gap-2 text-red-600 text-sm">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{error}</span>
+                    </div>
+                  )}
+                </div>
 
-              {/* Right side - Form */}
-              <div className="space-y-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <Input
-                      type="email"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={handleEmailChange}
-                      className={`w-full p-6 text-lg ${error && !isTyping ? 'border-red-500 focus:ring-red-500' : ''}`}
-                      aria-invalid={error ? "true" : "false"}
-                    />
-                    {error && !isTyping && (
-                      <div className="flex items-center gap-2 text-red-600 text-sm">
-                        <AlertCircle className="w-4 h-4" />
-                        <span>{error}</span>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <Button 
-                    type="submit"
-                    size="lg"
-                    className="w-full group"
-                  >
-                    Subscribe Now
-                    <Send className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </form>
+                <Button type="submit" size="lg" className="w-full flex items-center justify-center gap-2">
+                  Subscribe Now
+                  <Send className="w-4 h-4" />
+                </Button>
+              </form>
 
-                <p className="text-sm text-gray-500 text-center">
-                  Join 5,000+ subscribers. Unsubscribe anytime.
-                </p>
+              <p className="text-xs sm:text-sm text-gray-500 text-center">
+                Join 5,000+ subscribers. Unsubscribe anytime.
+              </p>
 
-                {isSubmitted && (
-                  <Alert className="bg-green-50 text-green-800 border-green-200">
-                    <AlertDescription>
-                      Thanks for subscribing! Check your email to confirm your subscription.
-                    </AlertDescription>
-                  </Alert>
-                )}
-              </div>
+              {isSubmitted && (
+                <Alert className="bg-green-50 text-green-800 border-green-200 text-center">
+                  <AlertDescription>
+                    Thanks for subscribing! Check your email to confirm your subscription.
+                  </AlertDescription>
+                </Alert>
+              )}
             </div>
           </div>
         </div>
