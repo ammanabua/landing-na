@@ -17,10 +17,10 @@ export default function Home() {
         <Services />
         <About />
         <PodcastFeature />
-        {/* <Booking /> */}
-        {/* <Testimonials />
+        <Booking />
+        <Testimonials />
         <Newsletter />
-        <Contact /> */}
+        <Contact />
       </main>
     </div>
   );
