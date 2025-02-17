@@ -12,7 +12,7 @@ const Booking = () => {
           {/* Left side - Image */}
           <div className="relative flex justify-center">
             <Image 
-              src="/nahom.png" 
+              src="/cta.png" 
               alt="Nahom Abegaze" 
               className="rounded-lg w-full max-w-xs sm:max-w-sm md:max-w-md object-contain shadow-lg h-auto"
               width={150}

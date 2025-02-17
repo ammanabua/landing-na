@@ -48,7 +48,7 @@ const About = () => {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-none">
               <Image 
-                src="/nahom-about.png" 
+                src="/nahom-about.jpg" 
                 alt="Nahom Abegaze" 
                 className="rounded-lg object-cover shadow-lg w-full h-auto"
                 width={400}
