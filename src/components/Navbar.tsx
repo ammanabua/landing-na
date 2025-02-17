@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,9 +16,14 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="w-full bg-[#353463] z-56 absolute top-0 left-0 right-0">
+    <motion.nav
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1, duration: 1 }}
+      className="w-full bg-[#353463] z-56 absolute top-0 left-0 right-0">
+        
       <div className="mx-auto p-4">
-        <div className="flex md:flex-col justify-between items-center space-y-4">
+        <motion.div className="flex md:flex-col justify-between items-center space-y-4">
           {/* Logo */}
           <div className="font-bold text-3xl">
             <a href="#" className="text-[#f9c771] font-light">
@@ -53,7 +59,7 @@ const Navbar = () => {
               )}
             </Button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Mobile Menu */}
         {isOpen && (
@@ -77,7 +83,7 @@ const Navbar = () => {
           </div>
         )}
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

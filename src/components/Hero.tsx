@@ -7,7 +7,9 @@ const Hero = () => {
   return (
     <main className='hero flex flex-col w-full'>
         <motion.section
-            animate={{ rotate: 360 }} className="flex flex-col items-center justify-center text-center w-full h-screen text-white">
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.5 }} className="flex flex-col items-center justify-center text-center w-full h-screen text-white">
             {/* <Image
                 className="dark:invert"
                 src="/bg.jpg"
