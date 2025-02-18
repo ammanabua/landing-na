@@ -19,7 +19,7 @@ const podcastEpisodes = [
 const PodcastFeature = () => {
 
   return (
-    <section className="flex flex-col w-full items-center justify-center py-16 bg-gradient-to-b from-white to-gray-50">
+    <section className="flex flex-col w-full items-center justify-center py-16">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
@@ -35,7 +35,7 @@ const PodcastFeature = () => {
           {podcastEpisodes.map((episode, index) => (
             <div 
               key={index}
-              className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-[#F6BB66] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Image Section */}

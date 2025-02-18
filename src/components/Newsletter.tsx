@@ -33,7 +33,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 bg-gradient-to-br from-blue-50 to-gray-50">
+    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#5F3E50]">
       <div className="max-w-6xl mx-auto w-full">
         {/* Main Content */}
         <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-12">

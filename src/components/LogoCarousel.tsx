@@ -53,7 +53,7 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <section className={`py-8 sm:py-12 lg:py-16 bg-gray-50 flex w-full justify-center items-center ${className}`}>
+    <section className={`py-8 sm:py-12 lg:py-16 bg-white flex w-full justify-center items-center ${className}`}>
       <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">

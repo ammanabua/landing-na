@@ -23,23 +23,23 @@ const About = () => {
   ];
 
   return (
-    <section className="flex w-full justify-center items-center">
+    <section className="flex w-full justify-center items-center bg-[#D1B88F] py-16">
       <div className="max-w-6xl mx-auto px-4">
         {/* Main About Content - Side by Side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Left side - Text Content */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">Nahom Abegaze</h3>
-            <p className="text-gray-600">
+            <h3 className="text-3xl text-white font-semibold">Nahom Abegaze</h3>
+            <p className="text-white">
             An innovative executive coach with over twelve years of experience delivering tangible results for organizations and individuals, through program development and operations management. With a strong background in higher education and expertise in developing and maintaining diversity, equity, and inclusion initiatives. A skilled communicator and collaborator, bringing a global perspective through international experience with interprsonal and cultural dexterity in both corporate, educational, and non-profit organizations. 
             </p>
-            <p className="text-gray-600">
+            <p className="text-white">
               As a certified life and business coach, I&apos;m passionate about helping ambitious individuals unlock their full potential. My journey began in corporate leadership, where I discovered my true calling: empowering others to achieve their dreams.
             </p>
-            <p className="text-gray-600">
+            <p className="text-white">
               My approach combines practical business strategies with personal development techniques, creating a holistic path to success. Whether you&apos;re looking to advance your career, scale your business, or find better work-life balance, I&apos;m here to guide you every step of the way.
             </p>
-            <p className="text-gray-600">
+            <p className="text-white">
               I leverage a potent blend of cultural awareness with strong business acumen to faithfully execute on strategy, achieving or exceeding planned P&L objectives. Adept problem solver passionate about embracing challenges and working closely with stakeholders to design elegant solutions. Passionate about nurturing a culture of excellence.
             </p>
           </div>
