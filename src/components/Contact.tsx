@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -134,12 +134,6 @@ const Contact = () => {
                 title: "Email",
                 content: "hello@lifecoach.com",
                 link: "mailto:hello@lifecoach.com"
-              },
-              {
-                icon: <Phone className="w-5 h-5" />,
-                title: "Phone",
-                content: "+1 (555) 123-4567",
-                link: "tel:+15551234567"
               },
               {
                 icon: <MapPin className="w-5 h-5" />,

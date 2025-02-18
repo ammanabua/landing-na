@@ -1,6 +1,6 @@
 
 import About from "@/components/About";
-import Booking from "@/components/Booking";
+// import Booking from "@/components/Booking";
 import Contact from "@/components/Contact";
 import Hero from "@/components/Hero";
 import LogoCarousel from "@/components/LogoCarousel";
@@ -15,11 +15,11 @@ export default function Home() {
     <div className="flex items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
       <main className="flex flex-col row-start-2 items-center sm:items-start w-full">
         <Hero />
+        <About />
         <Services />
         <LogoCarousel speed={40} />
-        <About />
         <PodcastFeature />
-        <Booking />
+        {/* <Booking /> */}
         <Testimonials />
         <Newsletter />
         <Contact />

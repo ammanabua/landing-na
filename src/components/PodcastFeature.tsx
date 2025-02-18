@@ -31,7 +31,7 @@ const PodcastFeature = () => {
         </div>
 
         {/* Podcast Episodes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1">
           {podcastEpisodes.map((episode, index) => (
             <div 
               key={index}
@@ -39,7 +39,7 @@ const PodcastFeature = () => {
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Image Section */}
-                <div className="relative md:w-2/5">
+                <div className="relative md:w-3/5">
                   <Image 
                     src={episode.imageUrl}
                     alt={episode.title}
@@ -53,7 +53,7 @@ const PodcastFeature = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="p-6 md:w-3/5 flex flex-col justify-between">
+                <div className="p-6 md:w-2/5 flex flex-col justify-between">
                   <div>
                     <div className="flex items-center gap-2 text-blue-600 mb-2">
                       <Mic className="w-4 h-4" />

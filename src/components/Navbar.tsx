@@ -9,8 +9,8 @@ const Navbar = () => {
 
   const menuItems = [
     { label: 'Home', href: '#' },
-    { label: 'Services', href: '#services' },
     { label: 'My Story', href: '#about' },
+    { label: 'Services', href: '#services' },
     { label: 'Testimonials', href: '#testimonials' },
     { label: 'Contact', href: '#contact' }
   ];
@@ -21,7 +21,7 @@ const Navbar = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 1, duration: 1 }}
 
-      className="w-full bg-[#3E5A73] z-56 absolute top-0 left-0 right-0">
+      className="w-full bg-[#3E5A73] z-20 absolute top-0 left-0 right-0">
 
       <div className="mx-auto p-4">
         <motion.div className="flex md:flex-col justify-between items-center space-y-4">
@@ -38,7 +38,7 @@ const Navbar = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-gray-900 transition-colors duration-200 cursor-pointer"
+                className="text-gray-300 hover:text-gray-900 transition-colors duration-500 cursor-pointer"
               >
                 {item.label}
               </a>

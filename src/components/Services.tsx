@@ -4,17 +4,17 @@ import ServiceCard from './ServiceCard'
 const services = [
     {
         image: "/one_one.jpg", 
-        title: "1:1 Coaching", 
+        title: "Speaking", 
         description: "This is a sample description for the card. Replace this with your actual content."
     },
     {
         image: "/group.jpg", 
-        title: "Group Coaching", 
+        title: "Coaching", 
         description: "This is a sample description for the card. Replace this with your actual content."
     },
     {
         image: "/dei.jpg", 
-        title: "DEI Consultation", 
+        title: "Consultation", 
         description: "This is a sample description for the card. Replace this with your actual content."
     },
 ]

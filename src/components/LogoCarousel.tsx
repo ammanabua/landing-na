@@ -22,14 +22,18 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
   const logos: Logo[] = [
-    { name: 'Google', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Microsoft', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Apple', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Amazon', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Meta', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Netflix', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'Tesla', src: '/api/placeholder/160/80', width: 160, height: 80 },
-    { name: 'IBM', src: '/api/placeholder/160/80', width: 160, height: 80 }
+    { name: 'Chum', src: '/clients/chum.avif', width:320, height: 160 },
+    { name: 'City of Fairfield', src: '/clients/cof.jpg', width:320, height: 160 },
+    { name: 'Conflict Resolution Center', src: '/clients/crc.png', width:320, height: 160 },
+    { name: 'Empowerment Process', src: '/clients/ep.jpg', width:320, height: 160 },
+    { name: 'Future Model', src: '/clients/fm.png', width:320, height: 160 },
+    { name: 'Grit', src: '/clients/grit.png', width:320, height: 160 },
+    { name: 'The Hills Youth and Family Services', src: '/clients/hills.jpg', width:320, height: 160 },
+    { name: 'iPec', src: '/clients/ipec.png', width:320, height: 160 },
+    { name: 'MIR', src: '/clients/mir.jpg', width:320, height: 160 },
+    { name: 'Maharishi International University', src: '/clients/miu.png', width:320, height: 160 },
+    { name: 'University of Minnesota Duluth', src: '/clients/um.jpg', width:320, height: 160 },
+    { name: 'The YMCA', src: '/clients/ymca.jpg', width:320, height: 160 }
   ];
 
   useEffect(() => {
@@ -84,12 +88,11 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
                 <div
                   key={`${logo.name}-${index}`}
                   className="mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center"
-                  style={{ maxWidth: '140px' }}
                 >
                   <Image
                     src={logo.src}
                     alt={`${logo.name} logo`}
-                    className="h-8 sm:h-10 lg:h-12 w-auto grayscale hover:grayscale-0 transition-all duration-300 transform hover:scale-105"
+                    className="h-8 sm:h-10 lg:h-12 w-auto transition-all duration-300 transform hover:scale-105 object-contain"
                     loading="lazy"
                     width={logo.width}
                     height={logo.height}
