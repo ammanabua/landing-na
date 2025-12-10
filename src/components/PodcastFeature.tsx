@@ -108,7 +108,7 @@ const PodcastFeature = () => {
           <Button 
             variant="default" 
             size="lg"
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-2 bg-slate-800 text-white font-semibold"
             onClick={() => window.open('#', '_blank')}
           >
             View All Podcast Appearances

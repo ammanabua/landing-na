@@ -5,8 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 type FormFields = 'name' | 'email' | 'subject' | 'message';
 
@@ -200,7 +199,7 @@ const Contact = () => {
                 <Button 
                   type="submit"
                   size="lg"
-                  className="w-full group"
+                  className="w-full group bg-slate-800 text-white font-semibold"
                   disabled={isSubmitted}
                 >
                   {isSubmitted ? (

@@ -68,7 +68,7 @@ const Hero = () => {
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}>
-              <Button variant="default" size="lg" className='mt-8 bg-gradient-to-r from-blue-500 to-cyan-400 hover:from-blue-600 hover:to-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-shadow'>
+              <Button variant="default" size="lg" className='mt-8 bg-blue-500 hover:bg-cyan-500 text-white font-semibold shadow-lg hover:shadow-xl transition-shadow rounded-full'>
                   Let&apos;s Work Together
               </Button>
             </motion.div>
