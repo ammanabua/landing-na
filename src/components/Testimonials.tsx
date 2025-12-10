@@ -33,8 +33,8 @@ const Testimonials = (): JSX.Element => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50 w-full flex justify-center items-center">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-16 bg-gray-50 w-full flex justify-center items-center overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

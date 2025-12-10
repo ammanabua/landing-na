@@ -40,8 +40,8 @@ const Booking = () => {
   };
 
   return (
-    <section ref={ref} className="w-full flex justify-center items-center py-16 px-4 bg-gray-50">
-      <div className="max-w-6xl mx-auto">
+    <section ref={ref} className="w-full flex justify-center items-center py-16 px-4 bg-gray-50 overflow-hidden">
+      <div className="max-w-6xl mx-auto w-full">
         <motion.div
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

@@ -20,8 +20,8 @@ const podcastEpisodes = [
 const PodcastFeature = () => {
 
   return (
-    <section className="flex flex-col w-full items-center justify-center py-16">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="flex flex-col w-full items-center justify-center py-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

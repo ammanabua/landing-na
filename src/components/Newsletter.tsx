@@ -34,7 +34,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#1E152A]">
+    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#1E152A] overflow-hidden">
       <div className="max-w-6xl mx-auto w-full">
         {/* Main Content */}
         <motion.div
@@ -112,7 +112,7 @@ const Newsletter = () => {
                   )}
                 </div>
 
-                <Button type="submit" size="lg" className="w-full flex items-center justify-center gap-2">
+                <Button type="submit" size="lg" className="w-full flex items-center justify-center gap-2 bg-slate-800 text-white font-semibold hover:bg-amber-500 hover:text-slate-800" disabled={isSubmitted}>
                   Subscribe Now
                   <Send className="w-4 h-4" />
                 </Button>

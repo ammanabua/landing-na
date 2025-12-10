@@ -113,8 +113,8 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white w-full flex justify-center items-center">
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white w-full flex justify-center items-center overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

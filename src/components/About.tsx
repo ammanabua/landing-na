@@ -70,8 +70,8 @@ const About = (): JSX.Element => {
   ];
 
   return (
-    <section ref={ref} className="flex w-full justify-center items-center bg-[#D1B88F] py-16">
-      <div className="max-w-6xl mx-auto px-4">
+    <section ref={ref} className="flex w-full justify-center items-center bg-[#D1B88F] py-16 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 w-full">
         {/* Main About Content - Side by Side */}
         <motion.div
           initial="hidden"
