@@ -1,11 +1,36 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Check if at top of page
+      setIsAtTop(currentScrollY < 50);
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide navbar
+        setIsVisible(false);
+      } else {
+        // Scrolling up - show navbar
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
 
   const menuItems = [
     { label: 'Home', href: '#' },
@@ -15,73 +40,181 @@ const Navbar = () => {
     { label: 'Contact', href: '#contact' }
   ];
 
+  const navVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const menuVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1 + 0.3,
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    }),
+  };
+
+  const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+    exit: {
+      opacity: 0,
+      y: -10,
+      transition: { duration: 0.3, ease: "easeIn" },
+    },
+  };
+
   return (
     <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 1, duration: 1 }}
+      initial="hidden"
+      animate={isVisible ? "visible" : "hidden"}
+      variants={navVariants}
+      transition={{ duration: 0.3 }}
+      className={`w-full z-20 fixed top-0 left-0 right-0 backdrop-blur-md border-b transition-colors duration-300 ${
+        isAtTop
+          ? 'bg-white/90 dark:bg-slate-950/90 border-gray-200/50 dark:border-slate-800/50'
+          : 'bg-slate-900/90 dark:bg-white/90 border-slate-700/50 dark:border-gray-200/50'
+      }`}>
 
-      className="w-full bg-[#3E5A73] z-20 absolute top-0 left-0 right-0">
-
-      <div className="mx-auto p-4">
-        <motion.div className="flex md:flex-col justify-between items-center space-y-4">
+      <div className="mx-auto max-w-7xl px-6 py-3">
+        <motion.div className="flex justify-between items-center">
           {/* Logo */}
-          <div className="text-3xl">
-            <a href="#" className="text-white font-bold">
-              Nahom Abegaze
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-2xl">
+            <a href="#" className={`font-light tracking-tight transition-colors ${
+              isAtTop
+                ? 'text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400'
+                : 'text-white dark:text-slate-900 hover:text-blue-300 dark:hover:text-blue-600'
+            }`}>
+              NA
             </a>
-          </div>
+          </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {menuItems.map((item) => (
-              <a
+          <div className="hidden md:flex items-center space-x-1">
+            {menuItems.map((item, i) => (
+              <motion.a
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-gray-900 transition-colors duration-500 cursor-pointer"
+                custom={i}
+                initial="hidden"
+                animate="visible"
+                variants={menuVariants}
+                whileHover={{ color: isAtTop ? "#2563eb" : "#93c5fd" }}
+                className={`px-4 py-2 text-sm transition-colors font-light ${
+                  isAtTop
+                    ? 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    : 'text-gray-200 dark:text-slate-600 hover:text-blue-300 dark:hover:text-blue-600'
+                }`}
               >
                 {item.label}
-              </a>
+              </motion.a>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2"
-            >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
-            </Button>
+          {/* Right Side - CTA & Mobile Menu */}
+          <div className="flex items-center space-x-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+              className="hidden md:block">
+              <Button
+                variant="default"
+                size="sm"
+                className={`font-light rounded-full px-6 transition-colors ${
+                  isAtTop
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100'
+                    : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800'
+                }`}>
+                Consult
+              </Button>
+            </motion.div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <motion.button
+                onClick={() => setIsOpen(!isOpen)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`inline-flex items-center justify-center p-2 transition-colors ${
+                  isAtTop
+                    ? 'text-slate-900 dark:text-white'
+                    : 'text-white dark:text-slate-900'
+                }`}
+              >
+                {isOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </motion.button>
+            </div>
           </div>
         </motion.div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden absolute top-18 inset-x-0 bg-white shadow-md">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {menuItems.map((item) => (
-                <a
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            variants={mobileMenuVariants}
+            className={`md:hidden absolute top-16 inset-x-0 backdrop-blur-md border-b transition-colors ${
+              isAtTop
+                ? 'bg-white/95 dark:bg-slate-950/95 border-gray-200/50 dark:border-slate-800/50'
+                : 'bg-slate-800/95 dark:bg-gray-100/95 border-slate-700/50 dark:border-gray-200/50'
+            }`}>
+            <div className="px-4 py-4 space-y-2">
+              {menuItems.map((item, i) => (
+                <motion.a
                   key={item.label}
                   href={item.href}
-                  className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-md text-center"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`block px-4 py-2 text-sm transition-colors font-light ${
+                    isAtTop
+                      ? 'text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400'
+                      : 'text-gray-100 dark:text-slate-700 hover:text-blue-300 dark:hover:text-blue-600'
+                  }`}
                 >
                   {item.label}
-                </a>
+                </motion.a>
               ))}
-              <div className="px-3 py-2">
-                <Button variant="default" size="sm" className="w-full">
-                  Book a Consultation
+              <motion.div
+                initial={{ opacity: 0, y: 5 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35 }}
+                className="px-4 py-3">
+                <Button
+                  variant="default"
+                  size="sm"
+                  className={`w-full font-light rounded-full transition-colors ${
+                    isAtTop
+                      ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100'
+                      : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800'
+                  }`}>
+                  Book Consultation
                 </Button>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
     </motion.nav>

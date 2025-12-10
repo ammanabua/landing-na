@@ -4,6 +4,7 @@ import { Send, Check, AlertCircle } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { motion } from 'framer-motion';
 
 const Newsletter = () => {
   const [email, setEmail] = useState('');
@@ -33,13 +34,34 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#5F3E50]">
+    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#A5C882]">
       <div className="max-w-6xl mx-auto w-full">
         {/* Main Content */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 md:p-12">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+              },
+            }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Side - Content */}
-            <div className="space-y-6 text-center lg:text-left">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: -20 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+              }}
+              className="space-y-6 text-center lg:text-left">
               <h2 className="text-2xl sm:text-3xl font-bold">Level Up Your Life & Career</h2>
               <p className="text-gray-600 text-base sm:text-lg">
                 Join our community of ambitious professionals. Get weekly insights on:
@@ -51,16 +73,27 @@ const Newsletter = () => {
                   'Exclusive coaching resources & exercises',
                   'Early access to workshops & events'
                 ].map((item, index) => (
-                  <li key={index} className="flex items-center gap-2 justify-center lg:justify-start">
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.08 }}
+                    viewport={{ once: false }}
+                    className="flex items-center gap-2 justify-center lg:justify-start">
                     <Check className="w-5 h-5 text-green-500" />
                     <span className="text-gray-600">{item}</span>
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Right Side - Form */}
-            <div className="space-y-6 w-full">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: 20 },
+                visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+              }}
+              className="space-y-6 w-full">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
                   <Input
@@ -96,9 +129,9 @@ const Newsletter = () => {
                   </AlertDescription>
                 </Alert>
               )}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

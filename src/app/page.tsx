@@ -13,16 +13,26 @@ import Testimonials from "@/components/Testimonials";
 export default function Home() {
   return (
     <div className="flex items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col row-start-2 items-center sm:items-start w-full">
-        <Hero />
-        <About />
-        <Services />
-        <LogoCarousel speed={40} />
+      <main className="grid grid-cols-1 justify-center items-center sm:items-start w-full">
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="about">
+          <About />
+        </section>
+        <section id="services">
+          <Services />
+        </section>
+        <LogoCarousel speed={50} />
         <PodcastFeature />
         {/* <Booking /> */}
-        <Testimonials />
+        <section id="testimonials">
+          <Testimonials />
+        </section>
         <Newsletter />
-        <Contact />
+        <section id="contact">
+          <Contact />
+        </section>
       </main>
     </div>
   );

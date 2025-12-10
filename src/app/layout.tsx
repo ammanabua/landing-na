@@ -3,6 +3,7 @@ import { Lato } from "next/font/google";
 import "./globals.css";
 import  Navbar  from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 
 
 const lato = Lato({
@@ -33,6 +34,7 @@ export default function RootLayout({
         className={`${lato.variable} antialiased`}>
         <Navbar />
         {children}
+        <ScrollToTop />
         <Footer />
       </body>
     </html>

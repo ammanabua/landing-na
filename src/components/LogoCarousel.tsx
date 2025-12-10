@@ -57,8 +57,8 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   const duplicatedLogos = [...logos, ...logos];
 
   return (
-    <section className={`py-8 sm:py-12 lg:py-16 bg-white flex w-full justify-center items-center ${className}`}>
-      <div className="max-w-6xl mx-auto px-4 w-full">
+    <section className={`py-4 sm:py-6 lg:py-8 bg-white flex w-full justify-center items-center ${className}`}>
+      <div className="max-w-7xl mx-auto px-4 w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
@@ -71,15 +71,15 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
         </div>
 
         {/* Carousel Container */}
-        <div className="relative overflow-hidden w-full">
+        <div className="relative overflow-hidden w-full min-h-32 sm:min-h-40 lg:min-h-48 flex items-center">
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+          <div className="absolute left-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
 
           {/* Logo Track */}
           <div className="relative flex w-full overflow-hidden">
             <div 
-              className="flex whitespace-nowrap animate-marquee"
+              className="flex whitespace-nowrap animate-marquee gap-8 sm:gap-12 lg:gap-16"
               style={{
                 animation: `marquee ${animationDuration}s linear infinite`
               }}
@@ -87,12 +87,12 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
               {duplicatedLogos.map((logo, index) => (
                 <div
                   key={`${logo.name}-${index}`}
-                  className="mx-4 sm:mx-6 lg:mx-8 flex items-center justify-center"
+                  className="flex-shrink-0 flex items-center justify-center"
                 >
                   <Image
                     src={logo.src}
                     alt={`${logo.name} logo`}
-                    className="h-8 sm:h-10 lg:h-12 w-auto transition-all duration-300 transform hover:scale-105 object-contain"
+                    className="h-20 sm:h-24 lg:h-28 w-auto transition-all duration-300 transform hover:scale-110 object-contain"
                     loading="lazy"
                     width={logo.width}
                     height={logo.height}

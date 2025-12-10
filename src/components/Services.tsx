@@ -21,7 +21,7 @@ const services = [
 
 const Services = () => {
   return (
-    <div className='flex flex-col items-center justify-center w-full bg-[#F0BF46] px-4 py-16'>
+    <div className='flex flex-col items-center justify-center w-full bg-[#CCE0FF] px-4 py-16'>
         <h2 className='text-4xl font-bold text-center'>How I Help</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-12 mx-auto max-w-6xl">
                 {services.map((service, index) => (

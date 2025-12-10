@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 type FormFields = 'name' | 'email' | 'subject' | 'message';
 
@@ -115,15 +117,31 @@ const Contact = () => {
     <section className="py-20 bg-gradient-to-b from-gray-50 to-white w-full flex justify-center items-center">
       <div className="max-w-6xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.2 }}
+          className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Let&apos;s Connect</h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Let&apos;s start the conversation. Whether you&apos;re looking for a speaker, a coach, a consultant, or simply exploring possibilities, I&apos;d love to hear from you.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+            },
+          }}
+          className="grid grid-cols-1 lg:grid-cols-5 gap-12">
           {/* Contact Info Cards - Left Side */}
           <div className="lg:col-span-2 space-y-6">
             {/* Info Cards */}
@@ -141,8 +159,12 @@ const Contact = () => {
                 link: "#"
               }
             ].map((item, index) => (
-              <a
+              <motion.a
                 key={index}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: false, amount: 0.2 }}
                 href={item.link}
                 className="group block bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300"
               >
@@ -155,12 +177,17 @@ const Contact = () => {
                     <p className="text-gray-600">{item.content}</p>
                   </div>
                 </div>
-              </a>
+              </motion.a>
             ))}
           </div>
 
           {/* Contact Form - Right Side */}
-          <div className="lg:col-span-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, amount: 0.2 }}
+            className="lg:col-span-3">
             <div className="bg-white rounded-2xl shadow-lg p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -190,8 +217,8 @@ const Contact = () => {
                 </Button>
               </form>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
