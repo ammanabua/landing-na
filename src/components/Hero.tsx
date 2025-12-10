@@ -18,10 +18,10 @@ const Hero = () => {
                 height={38}
                 priority
                 /> */}
-            <h1 className="text-4xl md:text-6xl font-bold"><span className='text-blue-800'>Coaching</span> Can <span className='text-blue-800'>Change</span> Everything</h1>
-            <p className="text-xl mt-4">Shift your perspective to unlock your potential!</p>
+            <h1 className="text-4xl md:text-6xl font-bold"><span className='text-blue-800'>Transform</span> Challenges Into <span className='text-blue-800'> Growth</span></h1>
+            <p className="text-xl mt-4">Lead with Clarity and Purpose</p>
             <Button variant="default" size="lg" className='mt-8'>
-                Book a Consultation
+                Let&apos;s Work Together
             </Button>
         </motion.section>
         <div className='absolute bg-black h-screen w-full opacity-25 top-0'></div>

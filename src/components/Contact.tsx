@@ -119,8 +119,7 @@ const Contact = () => {
           <h2 className="text-3xl font-bold mb-4">Let&apos;s Connect</h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
-            Ready to start your transformation journey? Reach out and let&apos;s discuss 
-            how we can work together to achieve your goals.
+            Let&apos;s start the conversation. Whether you&apos;re looking for a speaker, a coach, a consultant, or simply exploring possibilities, I&apos;d love to hear from you.
           </p>
         </div>
 
@@ -132,8 +131,8 @@ const Contact = () => {
               {
                 icon: <Mail className="w-5 h-5" />,
                 title: "Email",
-                content: "hello@lifecoach.com",
-                link: "mailto:hello@lifecoach.com"
+                content: "info@nahomabegaze.com",
+                link: "mailto:info@nahomabegaze.com"
               },
               {
                 icon: <MapPin className="w-5 h-5" />,
