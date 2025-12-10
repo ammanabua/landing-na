@@ -162,16 +162,17 @@ const Navbar = () => {
           {/* Right Side - CTA & Mobile Menu */}
           <div className="flex items-center space-x-4">
             <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.6 }}
               className="hidden md:block">
               <Button
-                variant="default"
                 size="lg"
-                className={`font-light rounded-full px-6 transition-colors font-semibold ${
+                className={`font-light rounded-full px-6 transition-colors font-semibold shadow-lg hover:shadow-xl transition-shadow ${
                   isAtTop
-                    ? 'bg-slate-800 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100'
+                    ? 'bg-amber-400 dark:bg-white text-slate-800 hover:text-white dark:text-slate-900 hover:bg-orange-500 dark:hover:bg-slate-100'
                     : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800'
                 }`}>
                 Consult
