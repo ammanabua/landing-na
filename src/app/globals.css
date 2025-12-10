@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-family: var(--font-montserrat-sans);
+  font-family: var(--font-sans);
 }
 
 @layer base {

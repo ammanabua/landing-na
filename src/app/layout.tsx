@@ -1,21 +1,15 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Lato } from "next/font/google";
 import "./globals.css";
 import  Navbar  from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 
 
-// const lato = Lato({
-//   variable: "--font-lato-sans",
-//   subsets: ["latin"],
-//   weight: ["100", "300", "400", "700", "900"],
-// });
-
-const montserrat = Montserrat({
-  variable: "--font-montserrat-sans",
+const lato = Lato({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["100", "300", "400", "700", "900"],
 });
 
 export const metadata: Metadata = {
@@ -35,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${montserrat.variable} antialiased overflow-x-hidden`}>
+        className={`${lato.variable} antialiased overflow-x-hidden`}>
         <Navbar />
         {children}
         <ScrollToTop />
