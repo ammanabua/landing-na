@@ -122,7 +122,7 @@ const Contact = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
           className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Let&apos;s Connect</h2>
+          <h2 className="text-3xl font-bold mb-4 text-slate-800">Let&apos;s Connect</h2>
           <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Let&apos;s start the conversation. Whether you&apos;re looking for a speaker, a coach, a consultant, or simply exploring possibilities, I&apos;d love to hear from you.

@@ -62,7 +62,7 @@ const Newsletter = () => {
                 visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
               }}
               className="space-y-6 text-center lg:text-left">
-              <h2 className="text-2xl sm:text-3xl font-bold">Level Up Your Life & Career</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-slate-800">Level Up Your Life & Career</h2>
               <p className="text-gray-600 text-base sm:text-lg">
                 Join our community of ambitious professionals. Get weekly insights on:
               </p>

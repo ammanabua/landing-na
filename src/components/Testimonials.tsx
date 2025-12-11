@@ -42,7 +42,7 @@ const Testimonials = (): JSX.Element => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
           className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Client Success Stories</h2>
+          <h2 className="text-3xl font-bold mb-4 text-slate-800">Client Success Stories</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Hear from professionals who have transformed their lives and careers 
             through our coaching partnership.

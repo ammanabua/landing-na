@@ -138,7 +138,7 @@ const About = (): JSX.Element => {
           animate={isInView ? "visible" : "hidden"}
           variants={containerVariants}
           className="mt-16 text-center">
-          <motion.h3 variants={itemVariants} className="text-2xl font-semibold mb-6 text-white">Credentials & Certifications</motion.h3>
+          <motion.h3 variants={itemVariants} className="text-2xl font-semibold mb-6 text-slate-800">Credentials & Certifications</motion.h3>
           <motion.div
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
