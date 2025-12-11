@@ -29,7 +29,7 @@ const PodcastFeature = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           viewport={{ once: false, amount: 0.2 }}
           className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Featured Podcast Appearances</h2>
+          <h2 className="text-3xl font-bold mb-4 text-slate-800">Featured Podcast Appearances</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">
             Listen to in-depth conversations where I share insights about personal development, 
             leadership, and achieving breakthrough results.
@@ -108,7 +108,7 @@ const PodcastFeature = () => {
           <Button 
             variant="default" 
             size="lg"
-            className="inline-flex items-center gap-2 bg-slate-800 text-white font-semibold"
+            className="inline-flex items-center gap-2 bg-slate-800 text-white font-semibold hover:bg-amber-500 hover:text-slate-800"
             onClick={() => window.open('#', '_blank')}
           >
             View All Podcast Appearances

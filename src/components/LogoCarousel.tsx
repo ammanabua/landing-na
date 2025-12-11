@@ -61,7 +61,7 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
       <div className="max-w-7xl mx-auto px-4 w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-slate-800">
             Trusted By Industry Leaders
           </h2>
           <div className="w-16 sm:w-20 h-1 bg-blue-500 mx-auto mb-4 sm:mb-6"></div>

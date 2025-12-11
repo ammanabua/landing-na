@@ -76,7 +76,7 @@ const Services = () => {
       variants={containerVariants}
     >
         <motion.h2 
-          className='text-4xl font-bold text-center'
+          className='text-4xl font-bold text-center text-slate-800'
           variants={titleVariants}
         >
           How I Help
