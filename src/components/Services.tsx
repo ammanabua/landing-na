@@ -69,7 +69,7 @@ const Services = () => {
   return (
     <motion.div 
       ref={ref}
-      className='flex flex-col items-center justify-center w-full bg-[#CCE0FF] px-4 py-16 overflow-hidden'
+      className='flex flex-col items-center justify-center w-full bg-[#d4d8f0] px-4 py-16 overflow-hidden'
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       exit="exit"

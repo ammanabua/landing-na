@@ -87,4 +87,14 @@ body {
   justify-content: center;
   color: white; /* Adjust text color for contrast */
   text-align: center;
+  animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

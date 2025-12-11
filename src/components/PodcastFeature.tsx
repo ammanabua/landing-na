@@ -11,7 +11,7 @@ const podcastEpisodes = [
     date: "Jan 15, 2024",
     duration: "45 mins",
     description: "Join me as I discuss the intersection of mindfulness and leadership, sharing practical strategies for becoming a more conscious and effective leader.",
-    imageUrl: "/api/placeholder/400/400",
+    imageUrl: "/podcast.jpg",
     link: "#"
   }
 ];

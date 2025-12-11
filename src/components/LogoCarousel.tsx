@@ -54,11 +54,11 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
     }
   }, [windowWidth, speed]);
 
-  const duplicatedLogos = [...logos, ...logos];
+  const duplicatedLogos = [...logos, ...logos, ...logos];
 
   return (
-    <section className={`py-4 sm:py-6 lg:py-8 bg-white flex w-full justify-center items-center ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 w-full">
+    <section className={`py-4 sm:py-6 lg:py-8 bg-[#d4d8f0] flex w-full justify-center items-center ${className}`}>
+      <div className="max-w-8xl mx-auto px-4 w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-slate-800">
@@ -92,7 +92,7 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
                   <Image
                     src={logo.src}
                     alt={`${logo.name} logo`}
-                    className="h-20 sm:h-24 lg:h-28 w-auto transition-all duration-300 transform hover:scale-110 object-contain"
+                    className="h-16 sm:h-20 lg:h-24 w-auto transition-all duration-300 transform object-contain  grayscale"
                     loading="lazy"
                     width={logo.width}
                     height={logo.height}
@@ -110,14 +110,14 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-50%);
+            transform: translateX(calc(-100% / 3));
           }
         }
         
         .animate-marquee {
           will-change: transform;
           display: flex;
-          min-width: 200%;
+          min-width: 300%;
         }
 
         @media (prefers-reduced-motion: reduce) {

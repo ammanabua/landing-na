@@ -9,7 +9,7 @@ const Testimonials = (): JSX.Element => {
     {
       name: "Ryan Parenti",
       role: "Startup Founder",
-      image: "/api/placeholder/80/80",
+      image: "/user.png",
       quote: "Working with Nahom has been a pleasure from begining to end. He always has insight, guidance, and a unique ability to solve problems. Highly recommended!",
       rating: 5,
       association: "6 months coaching program"
@@ -17,7 +17,7 @@ const Testimonials = (): JSX.Element => {
     {
       name: "Thomas Bryant",
       role: "Senior Executive",
-      image: "/api/placeholder/80/80",
+      image: "/user.png",
       quote: "Nahom helped me immensely in many ways to progress my health (both physical and mental), relationships, and my overall grasp of my purpose in this life. He is extremely detail-oriented and profoundly motivating. Thanks to Nahom, I have acquired many essential skills to navigate the complexities of the human personal growth process.",
       rating: 5,
       association: "8 months executive coaching"
@@ -25,8 +25,8 @@ const Testimonials = (): JSX.Element => {
     {
       name: "Luke Hills",
       role: "Career Transitioner",
-      image: "/api/placeholder/80/80",
-      quote: "Nahom’s coaching has guided me through major life decisions, helping me avoid pitfalls and align my career, finances, and relationships with my purpose. His insightful approach has not only brought tangible benefits but also boosted my confidence and integrity. I highly recommend him for optimizing performance, emotional well-being, and financial success.",
+      image: "/user.png",
+      quote: "Nahom's coaching has guided me through major life decisions, helping me avoid pitfalls and align my career, finances, and relationships with my purpose. His insightful approach has not only brought tangible benefits but also boosted my confidence and integrity. I highly recommend him for optimizing performance, emotional well-being, and financial success.",
       rating: 5,
       association: "4 months career coaching"
     }

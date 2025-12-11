@@ -199,7 +199,7 @@ const Contact = () => {
                 <Button 
                   type="submit"
                   size="lg"
-                  className="w-full group bg-slate-800 text-white font-semibold"
+                  className="w-full group bg-slate-800 hover:bg-amber-500 hover:text-slate-800 text-white font-semibold"
                   disabled={isSubmitted}
                 >
                   {isSubmitted ? (

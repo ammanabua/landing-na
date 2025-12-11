@@ -34,7 +34,7 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#1E152A] overflow-hidden">
+    <section className="w-full flex justify-center items-center py-12 px-4 bg-[#364958] overflow-hidden">
       <div className="max-w-6xl mx-auto w-full">
         {/* Main Content */}
         <motion.div

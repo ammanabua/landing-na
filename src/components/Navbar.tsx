@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
@@ -7,15 +7,40 @@ import { motion } from 'framer-motion';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true);
   const [activeLink, setActiveLink] = useState('#');
+  const lastScrollYRef = useRef(0);
+
+  // Color scheme definitions
+  const colors = {
+    light: {
+      bg: 'bg-white/70 border-gray-200/50',
+      text: 'text-slate-900',
+      navInactive: 'text-slate-600',
+      navActive: 'text-blue-600',
+      navHover: '#2563eb',
+      underline: 'bg-blue-600',
+      logo: 'text-slate-900 hover:text-blue-600',
+      button: 'bg-amber-400 text-slate-800 hover:bg-orange-500',
+    },
+    dark: {
+      bg: 'bg-slate-900/90 border-slate-700/50',
+      text: 'text-white',
+      navInactive: 'text-gray-200',
+      navActive: 'text-cyan-300',
+      navHover: '#06b6d4',
+      underline: 'bg-cyan-300',
+      logo: 'text-white hover:text-cyan-300',
+      button: 'bg-white text-slate-900 hover:bg-gray-100',
+    },
+  };
+
+  const currentColors = isAtTop ? colors.light : colors.dark;
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Check if at top of page
       setIsAtTop(currentScrollY < 50);
       
       // Determine active section based on scroll position
@@ -38,20 +63,18 @@ const Navbar = () => {
       }
       setActiveLink(currentActive);
       
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down - hide navbar
+      if (currentScrollY > lastScrollYRef.current && currentScrollY > 100) {
         setIsVisible(false);
       } else {
-        // Scrolling up - show navbar
         setIsVisible(true);
       }
       
-      setLastScrollY(currentScrollY);
+      lastScrollYRef.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
   const menuItems = [
     { label: 'Home', href: '#' },
@@ -103,11 +126,7 @@ const Navbar = () => {
       animate={isVisible ? "visible" : "hidden"}
       variants={navVariants}
       transition={{ duration: 0.3 }}
-      className={`w-full py-2 z-20 fixed top-0 left-0 right-0 backdrop-blur-md border-b transition-colors duration-300 ${
-        isAtTop
-          ? 'bg-white/90 dark:bg-slate-950/90 border-gray-200/50 dark:border-slate-800/50'
-          : 'bg-slate-900/90 dark:bg-white/90 border-slate-700/50 dark:border-gray-200/50'
-      }`}>
+      className={`w-full py-2 z-20 fixed top-0 left-0 right-0 backdrop-blur-md border-b transition-colors duration-300 ${currentColors.bg}`}>
 
       <div className="mx-auto max-w-7xl px-6 py-3">
         <motion.div className="flex justify-between items-center">
@@ -117,11 +136,7 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-2xl">
-            <a href="#" className={`font-light tracking-tight transition-colors ${
-              isAtTop
-                ? 'text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400'
-                : 'text-white dark:text-slate-900 hover:text-blue-300 dark:hover:text-blue-600'
-            }`}>
+            <a href="#" className={`font-light tracking-tight transition-colors ${currentColors.logo}`}>
               N.A.
             </a>
           </motion.div>
@@ -136,22 +151,18 @@ const Navbar = () => {
                 initial="hidden"
                 animate="visible"
                 variants={menuVariants}
-                whileHover={{ color: isAtTop ? "#2563eb" : "#93c5fd" }}
+                whileHover={{ color: currentColors.navHover }}
                 className={`px-4 py-2 text-sm transition-colors font-light rounded-md relative ${
                   activeLink === item.href
-                    ? isAtTop
-                      ? 'text-slate-800 dark:text-blue-400'
-                      : 'text-blue-300 dark:text-blue-600'
-                    : isAtTop
-                    ? 'text-slate-600 dark:text-slate-300'
-                    : 'text-gray-200 dark:text-gray-200'
+                    ? currentColors.navActive
+                    : currentColors.navInactive
                 }`}
               >
                 {item.label}
                 {activeLink === item.href && (
                   <motion.div
                     layoutId="navbar-underline"
-                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-blue-600 dark:bg-blue-400"
+                    className={`absolute bottom-1 left-4 right-4 h-0.5 ${currentColors.underline}`}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -170,11 +181,7 @@ const Navbar = () => {
               className="hidden md:block">
               <Button
                 size="lg"
-                className={`font-light rounded-full px-6 transition-colors font-semibold shadow-lg hover:shadow-xl transition-shadow ${
-                  isAtTop
-                    ? 'bg-amber-400 dark:bg-white text-slate-800 hover:text-white dark:text-slate-900 hover:bg-orange-500 dark:hover:bg-slate-100'
-                    : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800'
-                }`}>
+                className={`font-light rounded-full px-6 transition-colors font-semibold shadow-lg hover:shadow-xl ${currentColors.button}`}>
                 Consult
               </Button>
             </motion.div>
@@ -185,11 +192,7 @@ const Navbar = () => {
                 onClick={() => setIsOpen(!isOpen)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`inline-flex items-center justify-center p-2 transition-colors ${
-                  isAtTop
-                    ? 'text-slate-900 dark:text-white'
-                    : 'text-white dark:text-slate-900'
-                }`}
+                className={`inline-flex items-center justify-center p-2 transition-colors ${currentColors.text}`}
               >
                 {isOpen ? (
                   <X className="h-5 w-5" />
@@ -210,8 +213,8 @@ const Navbar = () => {
             variants={mobileMenuVariants}
             className={`md:hidden absolute top-16 inset-x-0 backdrop-blur-md border-b transition-colors ${
               isAtTop
-                ? 'bg-white/95 dark:bg-slate-950/95 border-gray-200/50 dark:border-slate-800/50'
-                : 'bg-slate-800/95 dark:bg-gray-100/95 border-slate-700/50 dark:border-gray-200/50'
+                ? 'bg-white/95 border-gray-200/50'
+                : 'bg-slate-800/95 border-slate-700/50'
             }`}>
             <div className="px-4 py-4 space-y-2">
               {menuItems.map((item, i) => (
@@ -224,12 +227,8 @@ const Navbar = () => {
                   transition={{ delay: i * 0.08 }}
                   className={`block px-4 py-2 text-sm transition-colors font-light rounded-md ${
                     activeLink === item.href
-                      ? isAtTop
-                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/30'
-                        : 'text-blue-300 dark:text-blue-600 bg-blue-900/20 dark:bg-blue-900/30'
-                      : isAtTop
-                      ? 'text-slate-600 dark:text-slate-300'
-                      : 'text-gray-100 dark:text-gray-100'
+                      ? `${currentColors.navActive} ${isAtTop ? 'bg-blue-50' : 'bg-blue-900/20'}`
+                      : currentColors.navInactive
                   }`}
                 >
                   {item.label}
@@ -243,12 +242,8 @@ const Navbar = () => {
                 <Button
                   variant="default"
                   size="sm"
-                  className={`w-full font-light rounded-full transition-colors ${
-                    isAtTop
-                      ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-slate-800 dark:hover:bg-slate-100'
-                      : 'bg-white dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-gray-100 dark:hover:bg-slate-800'
-                  }`}>
-                  Book Consultation
+                  className={`w-full font-light rounded-full transition-colors font-semibold ${currentColors.button}`}>
+                  Consult
                 </Button>
               </motion.div>
             </div>
