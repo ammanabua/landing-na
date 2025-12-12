@@ -56,8 +56,8 @@ const Hero = () => {
             <motion.h1
               variants={headingVariants}
               className="text-4xl md:text-6xl font-bold leading-tight">
-              <span className='text-blue-300 drop-shadow-lg'>Transform</span> Challenges Into{' '}
-              <span className='bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent drop-shadow-lg'> Growth</span>
+              <span className='text-cyan-300 drop-shadow-lg'>Transform</span> Challenges Into{' '}
+              <span className='text-cyan-300 drop-shadow-lg'> Growth</span>
             </motion.h1>
             <motion.p
               variants={itemVariants}
