@@ -135,7 +135,7 @@ const Navbar = (): JSX.Element => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-2xl">
+            className="text-3xl">
             <a href="#" className={`font-light tracking-tight transition-colors ${currentColors.logo}`}>
               N.A.
             </a>
@@ -152,7 +152,7 @@ const Navbar = (): JSX.Element => {
                 animate="visible"
                 variants={menuVariants}
                 whileHover={{ color: currentColors.navHover }}
-                className={`px-4 py-2 text-sm transition-colors font-light rounded-md relative ${
+                className={`px-4 py-2 text-md transition-colors font-light rounded-md relative ${
                   activeLink === item.href
                     ? currentColors.navActive
                     : currentColors.navInactive
@@ -225,7 +225,7 @@ const Navbar = (): JSX.Element => {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.08 }}
-                  className={`block px-4 py-2 text-sm transition-colors font-light rounded-md ${
+                  className={`block px-4 py-2 text-md transition-colors font-light rounded-md ${
                     activeLink === item.href
                       ? `${currentColors.navActive} ${isAtTop ? 'bg-gray-200/20' : 'bg-blue-900/20'}`
                       : currentColors.navInactive
