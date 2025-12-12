@@ -21,7 +21,7 @@ const Navbar = (): JSX.Element => {
       navHover: '#00D4FF',
       underline: 'bg-slate-300',
       logo: 'text-white hover:text-cyan-300',
-      button: 'bg-amber-400 text-slate-800 hover:bg-orange-500',
+      button: 'bg-amber-400 text-slate-800 hover:bg-orange-500 hover:text-white',
     },
     dark: {
       bg: 'bg-slate-900/80',
@@ -211,10 +211,10 @@ const Navbar = (): JSX.Element => {
             animate="visible"
             exit="exit"
             variants={mobileMenuVariants}
-            className={`md:hidden absolute top-16 inset-x-0 backdrop-blur-md border-b transition-colors ${
+            className={`md:hidden absolute top-16 inset-x-0 backdrop-blur-md transition-colors ${
               isAtTop
-                ? 'bg-white/95 border-gray-200/50'
-                : 'bg-slate-800/95 border-slate-700/50'
+                ? 'bg-[#3a3235]/95'
+                : 'bg-slate-800/95'
             }`}>
             <div className="px-4 py-4 space-y-2">
               {menuItems.map((item, i) => (
@@ -227,7 +227,7 @@ const Navbar = (): JSX.Element => {
                   transition={{ delay: i * 0.08 }}
                   className={`block px-4 py-2 text-sm transition-colors font-light rounded-md ${
                     activeLink === item.href
-                      ? `${currentColors.navActive} ${isAtTop ? 'bg-blue-50' : 'bg-blue-900/20'}`
+                      ? `${currentColors.navActive} ${isAtTop ? 'bg-gray-200/20' : 'bg-blue-900/20'}`
                       : currentColors.navInactive
                   }`}
                 >
