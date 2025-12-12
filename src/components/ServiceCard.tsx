@@ -23,15 +23,17 @@ const ServiceCard = ({
       whileHover={{ y: -8, boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
     >
-      <Card className="w-full h-full bg[#fffffe]">
+      <Card className="w-full h-full bg-[#fffffe]">
         {/* Image Section */}
-        <div className="h-48 overflow-hidden">
+        <div className="relative h-48 overflow-hidden">
           <Image
             src={image}
             alt={title}
-            width={80}
-            height={80}
-            className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+            fill
+            sizes="(min-width: 1024px) 400px, (min-width: 640px) 320px, 100vw"
+            quality={90}
+            className="object-cover transition-transform duration-300 hover:scale-105"
+            priority={false}
           />
         </div>
 

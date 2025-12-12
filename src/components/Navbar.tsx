@@ -1,10 +1,10 @@
 'use client'
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, JSX } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [isAtTop, setIsAtTop] = useState(true);
@@ -14,19 +14,19 @@ const Navbar = () => {
   // Color scheme definitions
   const colors = {
     light: {
-      bg: 'bg-white/70 border-gray-200/50',
-      text: 'text-slate-900',
-      navInactive: 'text-slate-600',
+      bg: 'bg-[#3A3235]/60',
+      text: 'text-white',
+      navInactive: 'text-white',
       navActive: 'text-blue-600',
       navHover: '#2563eb',
       underline: 'bg-blue-600',
-      logo: 'text-slate-900 hover:text-blue-600',
+      logo: 'text-white hover:text-blue-600',
       button: 'bg-amber-400 text-slate-800 hover:bg-orange-500',
     },
     dark: {
-      bg: 'bg-slate-900/90 border-slate-700/50',
+      bg: 'bg-slate-900/80',
       text: 'text-white',
-      navInactive: 'text-gray-200',
+      navInactive: 'text-white',
       navActive: 'text-cyan-300',
       navHover: '#06b6d4',
       underline: 'bg-cyan-300',
@@ -126,7 +126,7 @@ const Navbar = () => {
       animate={isVisible ? "visible" : "hidden"}
       variants={navVariants}
       transition={{ duration: 0.3 }}
-      className={`w-full py-2 z-20 fixed top-0 left-0 right-0 backdrop-blur-md border-b transition-colors duration-300 ${currentColors.bg}`}>
+      className={`w-full py-2 z-20 fixed top-0 left-0 right-0 backdrop-blur-md transition-colors duration-300 ${currentColors.bg}`}>
 
       <div className="mx-auto max-w-7xl px-6 py-3">
         <motion.div className="flex justify-between items-center">
@@ -241,7 +241,7 @@ const Navbar = () => {
                 className="px-4 py-3">
                 <Button
                   variant="default"
-                  size="sm"
+                  size="lg"
                   className={`w-full font-light rounded-full transition-colors font-semibold ${currentColors.button}`}>
                   Consult
                 </Button>

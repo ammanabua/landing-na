@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, JSX } from 'react';
 
 interface Logo {
   name: string;
@@ -14,10 +14,10 @@ interface LogoCarouselProps {
   className?: string;
 }
 
-const LogoCarousel: React.FC<LogoCarouselProps> = ({
-  speed = 30,
+const LogoCarousel = ({
+  speed = 18,
   className = ''
-}) => {
+}: LogoCarouselProps): JSX.Element => {
   const [animationDuration, setAnimationDuration] = useState<number>(speed);
   const [windowWidth, setWindowWidth] = useState<number>(0);
 
@@ -47,35 +47,29 @@ const LogoCarousel: React.FC<LogoCarouselProps> = ({
   }, []);
 
   useEffect(() => {
-    if (windowWidth < 768) {
-      setAnimationDuration(speed * 1.5);
-    } else {
-      setAnimationDuration(speed);
-    }
+    const baseDuration = Math.max(8, speed);
+    const duration = windowWidth < 768
+      ? Math.max(6, baseDuration * 0.85)
+      : baseDuration;
+
+    setAnimationDuration(duration);
   }, [windowWidth, speed]);
 
   const duplicatedLogos = [...logos, ...logos, ...logos];
 
   return (
     <section className={`py-4 sm:py-6 lg:py-8 bg-[#d4d8f0] flex w-full justify-center items-center ${className}`}>
-      <div className="max-w-8xl mx-auto px-4 w-full">
+      <div className="max-w-8xl mx-auto w-full">
         {/* Header Section */}
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4 text-slate-800">
-            Trusted By Industry Leaders
-          </h2>
-          <div className="w-16 sm:w-20 h-1 bg-blue-500 mx-auto mb-4 sm:mb-6"></div>
           <p className="text-gray-600 text-sm sm:text-base max-w-2xl mx-auto px-4">
-            I&apos;ve had the privilege of working with professionals from these leading organizations
+            Organizations that have trusted me to deliver exceptional services.
           </p>
+          <div className="w-16 sm:w-20 h-1 bg-slate-500 mx-auto mt-4 sm:mt-6"></div>
         </div>
 
         {/* Carousel Container */}
         <div className="relative overflow-hidden w-full min-h-32 sm:min-h-40 lg:min-h-48 flex items-center">
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 w-12 sm:w-20 h-full bg-gradient-to-l from-white to-transparent z-10"></div>
-
           {/* Logo Track */}
           <div className="relative flex w-full overflow-hidden">
             <div 

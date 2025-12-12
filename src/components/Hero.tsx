@@ -45,9 +45,9 @@ const Hero = () => {
     <main className='hero flex flex-col w-full' ref={ref}>
         <motion.div
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 0.25 } : { opacity: 0 }}
+          animate={isInView ? { opacity: 0.3 } : { opacity: 0 }}
           transition={{ duration: 1, ease: isInView ? "easeOut" : "easeIn" }}
-          className='absolute bg-black h-screen w-full opacity-25 top-0 z-[5]'></motion.div>
+          className='absolute bg-black h-screen w-full opacity-30 top-0 z-[5]'></motion.div>
         <motion.section
             initial="hidden"
             animate={isInView ? "visible" : "exit"}
