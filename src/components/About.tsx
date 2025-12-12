@@ -1,13 +1,14 @@
 'use client'
-import { Heart, Target, Award, Briefcase, Brain } from 'lucide-react';
+import { Heart, Target, Award, Briefcase, Brain, ChevronDown, ChevronUp } from 'lucide-react';
 import { Card, CardContent } from "@/components/ui/card";
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-import { JSX, useRef } from 'react';
+import { JSX, useRef, useState } from 'react';
 
 const About = (): JSX.Element => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,17 +83,36 @@ const About = (): JSX.Element => {
           <div className="space-y-6">
             <motion.h3 variants={itemVariants} className="text-3xl font-semibold text-slate-800">Nahom Abegaze</motion.h3>
             <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
-            An innovative executive coach with over twelve years of experience delivering tangible results for organizations and individuals, through program development and operations management. With a strong background in higher education and expertise in developing and maintaining diversity, equity, and inclusion initiatives. A skilled communicator and collaborator, bringing a global perspective through international experience with interprsonal and cultural dexterity in both corporate, educational, and non-profit organizations. 
+              An innovative executive coach with over twelve years of experience delivering tangible results for organizations and individuals, through program development and operations management. With a strong background in higher education and expertise in developing and maintaining diversity, equity, and inclusion initiatives.
             </motion.p>
             <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
               As a certified life and business coach, I&apos;m passionate about helping ambitious individuals unlock their full potential. My journey began in corporate leadership, where I discovered my true calling: empowering others to achieve their dreams.
             </motion.p>
-            <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
-              My approach combines practical business strategies with personal development techniques, creating a holistic path to success. Whether you&apos;re looking to advance your career, scale your business, or find better work-life balance, I&apos;m here to guide you every step of the way.
-            </motion.p>
-            <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
-              I leverage a potent blend of cultural awareness with strong business acumen to faithfully execute on strategy, achieving or exceeding planned P&L objectives. Adept problem solver passionate about embracing challenges and working closely with stakeholders to design elegant solutions. Passionate about nurturing a culture of excellence.
-            </motion.p>
+
+            <motion.div
+              className="overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={isExpanded ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
+            >
+              <div className="space-y-6 pt-2">
+                <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
+                  My approach combines practical business strategies with personal development techniques, creating a holistic path to success. Whether you&apos;re looking to advance your career, scale your business, or find better work-life balance, I&apos;m here to guide you every step of the way.
+                </motion.p>
+                <motion.p variants={itemVariants} className="text-slate-800 text-lg leading-relaxed">
+                  I leverage a potent blend of cultural awareness with strong business acumen to faithfully execute on strategy, achieving or exceeding planned P&amp;L objectives. Adept problem solver passionate about embracing challenges and working closely with stakeholders to design elegant solutions.
+                </motion.p>
+              </div>
+            </motion.div>
+
+            <motion.button
+              variants={itemVariants}
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="inline-flex items-center gap-2 text-blue-700 font-medium hover:text-blue-900 transition-colors"
+            >
+              {isExpanded ? 'Read less...' : 'Read more...'}
+              {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+            </motion.button>
           </div>
 
           {/* Right side - Image */}
